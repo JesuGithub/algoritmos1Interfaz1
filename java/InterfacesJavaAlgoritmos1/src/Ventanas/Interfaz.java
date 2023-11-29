@@ -115,7 +115,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jButtonSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSesionActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code herea:
     }//GEN-LAST:event_jButtonSesionActionPerformed
 
     /**
