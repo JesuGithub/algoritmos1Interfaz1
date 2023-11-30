@@ -4,6 +4,7 @@
  */
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -12,7 +13,7 @@ import java.awt.Toolkit;
  * @author j2a0a
  */
 public class Interfaz extends javax.swing.JFrame {
-
+    Color colorFondo = new Color(200,230,144);
     /**
      * Creates new form Interfaz
      */
@@ -37,13 +38,30 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jButton1 = new javax.swing.JButton();
-        jLabelIcon = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        header = new javax.swing.JPanel();
+        salidaBtn = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        barraValores = new javax.swing.JSlider();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        valorMatrizTxt = new javax.swing.JTextPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jTextFieldUser = new javax.swing.JTextField();
+        jTextFieldMatrizEnter = new javax.swing.JTextField();
         jPassword = new javax.swing.JPasswordField();
-        jButtonSesion = new javax.swing.JButton();
+        jLabelIcon = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
+        jButtonSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -52,31 +70,146 @@ public class Interfaz extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setForeground(new java.awt.Color(153, 255, 255));
-        jButton1.setText("Salir");
+        jButton1.setText("Operar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
 
-        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mugiwara-logo-303FD55C54-seeklogo.com.png"))); // NOI18N
-        getContentPane().add(jLabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        jButton2.setBackground(new java.awt.Color(0, 102, 102));
+        jButton2.setForeground(new java.awt.Color(153, 255, 255));
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("User:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
+        jLabel1.setText("3-");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Password:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, 30));
+        jLabel2.setText("2-");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, -1, 30));
+
+        jLabel3.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("4-");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Diagonal Principal mayor a menor");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("1-");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Diagonal Principal mayor a menor");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Diagonal Principal mayor a menor");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Tamaño de la Matriz a crear");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Diagonal Principal mayor a menor");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 210, 1010, 30));
+
+        salidaBtn.setBackground(new java.awt.Color(200, 230, 144));
+        salidaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salidaBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salidaBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salidaBtnMousePressed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setText("X");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel10MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel10MousePressed(evt);
+            }
+        });
+        salidaBtn.add(jLabel10);
+
+        getContentPane().add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 40, 40));
+
+        barraValores.setMajorTickSpacing(1);
+        barraValores.setMaximum(10);
+        barraValores.setMinimum(3);
+        barraValores.setPaintLabels(true);
+        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
+
+        jScrollPane2.setViewportView(valorMatrizTxt);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 70, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("ola\n");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
 
         jTextFieldUser.setBackground(new java.awt.Color(0, 51, 51));
         jTextFieldUser.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jTextFieldUser.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 200, -1));
+        getContentPane().add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 50, -1));
+
+        jTextFieldMatrizEnter.setBackground(new java.awt.Color(0, 51, 51));
+        jTextFieldMatrizEnter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTextFieldMatrizEnter.setForeground(new java.awt.Color(153, 153, 153));
+        jTextFieldMatrizEnter.setText("Ingrese de que tamaño será su matriz");
+        jTextFieldMatrizEnter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextFieldMatrizEnterMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextFieldMatrizEnterMousePressed(evt);
+            }
+        });
+        jTextFieldMatrizEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMatrizEnterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldMatrizEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, -1, -1));
 
         jPassword.setBackground(new java.awt.Color(0, 51, 51));
         jPassword.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -86,7 +219,14 @@ public class Interfaz extends javax.swing.JFrame {
                 jPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 435, 200, 30));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 200, 30));
+
+        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mugiwara-logo-303FD55C54-seeklogo.com.png"))); // NOI18N
+        getContentPane().add(jLabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
+        jLabelFondo.setText("jLabelFondo");
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 820));
 
         jButtonSesion.setBackground(new java.awt.Color(0, 102, 102));
         jButtonSesion.setForeground(new java.awt.Color(153, 255, 255));
@@ -96,11 +236,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jButtonSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
-
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngtree-green-gredient-background-picture-image_1915639.jpg"))); // NOI18N
-        jLabelFondo.setText("jLabelFondo");
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 580));
+        getContentPane().add(jButtonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 640, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,8 +251,77 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jButtonSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSesionActionPerformed
+        int numero, numero2;
+        String nombre = jTextFieldUser.getText();
+        numero = Integer.parseInt(nombre);
+        String nombre2 = valorMatrizTxt.getText();
+        numero2 = Integer.parseInt(nombre2);
+        char[] passwordCharArray = jPassword.getPassword();
+        String password = new String(passwordCharArray);
+
+        String mensaje = "Numero 1: " + numero + "\nContraseña: " + numero2 + "\nSuma: " + (numero + numero2);
+
+        // Mostrar un JOptionPane con la información ingresada
+        javax.swing.JOptionPane.showMessageDialog(this, mensaje, "Información de Sesión", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         // TODO add your handling code herea:
     }//GEN-LAST:event_jButtonSesionActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldMatrizEnterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldMatrizEnterMousePressed
+        if (jTextFieldMatrizEnter.getText().equals("Ingrese de que tamaño será su matriz")){
+            jTextFieldMatrizEnter.setText("");
+            jTextFieldMatrizEnter.setForeground(Color.white);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMatrizEnterMousePressed
+
+    private void jTextFieldMatrizEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatrizEnterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMatrizEnterActionPerformed
+
+    private void jTextFieldMatrizEnterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldMatrizEnterMouseExited
+        if (jTextFieldMatrizEnter.getText().isEmpty()){
+            jTextFieldMatrizEnter.setText("Ingrese de que tamaño será su matriz");
+        }    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMatrizEnterMouseExited
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void salidaBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMouseEntered
+        salidaBtn.setBackground(Color.red);
+        salidaBtn.setForeground(Color.white);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salidaBtnMouseEntered
+
+    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MousePressed
+
+    private void salidaBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMousePressed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salidaBtnMousePressed
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void salidaBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMouseExited
+        salidaBtn.setBackground(colorFondo);
+        salidaBtn.setForeground(Color.black);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salidaBtnMouseExited
 
     /**
      * @param args the command line arguments
@@ -154,14 +359,31 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSlider barraValores;
+    private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonSesion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelIcon;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextFieldMatrizEnter;
     private javax.swing.JTextField jTextFieldUser;
+    private javax.swing.JPanel salidaBtn;
+    private javax.swing.JTextPane valorMatrizTxt;
     // End of variables declaration//GEN-END:variables
 }
