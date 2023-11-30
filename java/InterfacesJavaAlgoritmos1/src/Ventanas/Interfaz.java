@@ -48,15 +48,14 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        header = new javax.swing.JPanel();
         salidaBtn = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        xLabel = new javax.swing.JLabel();
         barraValores = new javax.swing.JSlider();
         jScrollPane2 = new javax.swing.JScrollPane();
         valorMatrizTxt = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jTextFieldUser = new javax.swing.JTextField();
+        mostrarValor = new javax.swing.JTextField();
         jTextFieldMatrizEnter = new javax.swing.JTextField();
         jPassword = new javax.swing.JPasswordField();
         jLabelIcon = new javax.swing.JLabel();
@@ -66,6 +65,7 @@ public class Interfaz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
@@ -138,10 +138,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Diagonal Principal mayor a menor");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
-        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 210, 1010, 30));
 
         salidaBtn.setBackground(new java.awt.Color(200, 230, 144));
         salidaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salidaBtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 salidaBtnMouseEntered(evt);
             }
@@ -153,20 +155,23 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel10.setText("X");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        xLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        xLabel.setText("X");
+        xLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                xLabelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel10MouseEntered(evt);
+                xLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel10MouseExited(evt);
+                xLabelMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel10MousePressed(evt);
+                xLabelMousePressed(evt);
             }
         });
-        salidaBtn.add(jLabel10);
+        salidaBtn.add(xLabel);
 
         getContentPane().add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 40, 40));
 
@@ -174,6 +179,7 @@ public class Interfaz extends javax.swing.JFrame {
         barraValores.setMaximum(10);
         barraValores.setMinimum(3);
         barraValores.setPaintLabels(true);
+        barraValores.setToolTipText("ola");
         getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
         jScrollPane2.setViewportView(valorMatrizTxt);
@@ -187,10 +193,15 @@ public class Interfaz extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
 
-        jTextFieldUser.setBackground(new java.awt.Color(0, 51, 51));
-        jTextFieldUser.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTextFieldUser.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 50, -1));
+        mostrarValor.setBackground(new java.awt.Color(0, 51, 51));
+        mostrarValor.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        mostrarValor.setForeground(new java.awt.Color(255, 255, 255));
+        mostrarValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarValorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 50, -1));
 
         jTextFieldMatrizEnter.setBackground(new java.awt.Color(0, 51, 51));
         jTextFieldMatrizEnter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -222,7 +233,7 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 200, 30));
 
         jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mugiwara-logo-303FD55C54-seeklogo.com.png"))); // NOI18N
-        getContentPane().add(jLabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        getContentPane().add(jLabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 320, 280));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
@@ -242,7 +253,7 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);    
+        mostrarValor.setText(Integer.toString(barraValores.getValue()));
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -252,7 +263,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButtonSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSesionActionPerformed
         int numero, numero2;
-        String nombre = jTextFieldUser.getText();
+        String nombre = mostrarValor.getText();
         numero = Integer.parseInt(nombre);
         String nombre2 = valorMatrizTxt.getText();
         numero2 = Integer.parseInt(nombre2);
@@ -289,20 +300,20 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMatrizEnterMouseExited
 
-    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+    private void xLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xLabelMouseEntered
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MouseEntered
+    }//GEN-LAST:event_xLabelMouseEntered
 
     private void salidaBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMouseEntered
         salidaBtn.setBackground(Color.red);
-        salidaBtn.setForeground(Color.white);
+        xLabel.setForeground(Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_salidaBtnMouseEntered
 
-    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
+    private void xLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xLabelMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MousePressed
+    }//GEN-LAST:event_xLabelMousePressed
 
     private void salidaBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMousePressed
         
@@ -313,15 +324,29 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MousePressed
 
-    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+    private void xLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xLabelMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MouseExited
+    }//GEN-LAST:event_xLabelMouseExited
 
     private void salidaBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMouseExited
         salidaBtn.setBackground(colorFondo);
-        salidaBtn.setForeground(Color.black);
+        xLabel.setForeground(Color.black);
         // TODO add your handling code here:
     }//GEN-LAST:event_salidaBtnMouseExited
+
+    private void xLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xLabelMouseClicked
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xLabelMouseClicked
+
+    private void salidaBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaBtnMouseClicked
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salidaBtnMouseClicked
+
+    private void mostrarValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,12 +385,10 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider barraValores;
-    private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonSesion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -382,8 +405,9 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldMatrizEnter;
-    private javax.swing.JTextField jTextFieldUser;
+    private javax.swing.JTextField mostrarValor;
     private javax.swing.JPanel salidaBtn;
     private javax.swing.JTextPane valorMatrizTxt;
+    private javax.swing.JLabel xLabel;
     // End of variables declaration//GEN-END:variables
 }
