@@ -6,8 +6,13 @@ package Ventanas;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.TextField;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 
 /**
@@ -28,28 +33,39 @@ public class Interfaz extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/perroIcon.png"));
         return retValue;
     }
-    
-    
-    //llenado de matriz 
+    //marriz
+    JTextField matriz[][];
+
+    //Matriz: genera y rellena
     public void llenadoMatriz(int n){
-        int matriz[][] = new int[n][n];
-        String superTexto = "";
+        
+        //matriz tamano
+        
+        
+        //String superTexto = "";
+        matriz = new JTextField[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                matriz[i][j] = (int) (Math.random()*999 + 1);
+                //Rellena matriz con numeros aleatorios del 0 al 999
+                    matriz[i][j].setText(Integer.toString((int) (Math.random()*999)));
+                    matriz[i][j].setBounds(70*j +40,70*i+40,35,25); //x,y,ancho, alto
+                    this.add(matriz[i][j]);
+                    this.repaint();
+                /*matriz[i][j] = (int) (Math.random()*999 + 1); 
+                //Imprime la columna de la fila de la matriz
                 superTexto += Integer.toString(matriz[i][j]) + "           ";
             }
-            superTexto += "\n";
+            superTexto += "\n"; // genera espacio entre filas*/
         }
-        mostrarValores.setText(superTexto);
+        //mostrarValores.setText(superTexto);
+    }
     }
     
-    //generar matriz
-    public int[][] generarMatriz(int n){
-        int m[][] = new int[n][n];
-        return m;
-    }
    
+    
+    
+    
+    
             
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -176,7 +192,7 @@ public class Interfaz extends javax.swing.JFrame {
                 mostrarValorActionPerformed(evt);
             }
         });
-        getContentPane().add(mostrarValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 350, 250));
+        getContentPane().add(mostrarValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 60, 60));
 
         jTextFieldMatrizEnter.setBackground(new java.awt.Color(0, 51, 51));
         jTextFieldMatrizEnter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -210,7 +226,7 @@ public class Interfaz extends javax.swing.JFrame {
         mostrarValores.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(mostrarValores);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 430, 340));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 200, 170));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
@@ -221,8 +237,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         mostrarValor.setText(Integer.toString(barraValores.getValue()));
-        // recibe el valor de tamaño 
-        //recuerda modificar aqui para usar el scrollbar
+        //Recibe el valor de tamaño de la matiz
+        
         //int n = Integer.parseInt();
         int n = barraValores.getValue();// esto se va cuando funcione
         llenadoMatriz(n);
@@ -346,6 +362,7 @@ public class Interfaz extends javax.swing.JFrame {
                 new Interfaz().setVisible(true);
             }
         });
+     
     }
     
     

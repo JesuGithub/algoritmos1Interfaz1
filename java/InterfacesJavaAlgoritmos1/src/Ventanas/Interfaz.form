@@ -48,7 +48,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Operar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Por defecto"/>
         </Property>
       </Properties>
       <Events>
@@ -212,7 +212,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="480" width="350" height="250"/>
+          <AbsoluteConstraints x="390" y="480" width="60" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -265,7 +265,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="120" width="430" height="340"/>
+          <AbsoluteConstraints x="200" y="320" width="200" height="170"/>
         </Constraint>
       </Constraints>
 
