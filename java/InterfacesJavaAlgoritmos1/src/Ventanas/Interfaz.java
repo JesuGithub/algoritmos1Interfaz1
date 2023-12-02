@@ -31,16 +31,19 @@ public class Interfaz extends javax.swing.JFrame {
     
     
     //llenado de matriz 
-    public void llenadoMatriz(int matriz[][],int n){
-        
+    public void llenadoMatriz(int n){
+        int matriz[][] = new int[n][n];
+        String superTexto = "";
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                matriz[i][j] = (int) (Math.random()*999);
+                matriz[i][j] = (int) (Math.random()*999 + 1);
+                superTexto += Integer.toString(matriz[i][j]) + "           ";
             }
-            tMatriz.setText(Arrays.toString(matriz));
+            superTexto += "\n";
         }
-        tMatriz.setText("\n");
+        mostrarValores.setText(superTexto);
     }
+    
     //generar matriz
     public int[][] generarMatriz(int n){
         int m[][] = new int[n][n];
@@ -58,25 +61,16 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         salidaBtn = new javax.swing.JPanel();
         xLabel = new javax.swing.JLabel();
         barraValores = new javax.swing.JSlider();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        valorMatrizTxt = new javax.swing.JTextPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         mostrarValor = new javax.swing.JTextField();
         jTextFieldMatrizEnter = new javax.swing.JTextField();
-        jPassword = new javax.swing.JPasswordField();
-        jLabelIcon = new javax.swing.JLabel();
         jButtonSesion = new javax.swing.JButton();
-        tMatriz = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mostrarValores = new javax.swing.JTextPane();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,29 +117,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel3.setText("4-");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jLabel4.setText("Diagonal Principal mayor a menor");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
         jLabel5.setText("1-");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jLabel6.setText("Diagonal Principal mayor a menor");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jLabel7.setText("Diagonal Principal mayor a menor");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 580, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
         jLabel8.setText("Tamaño de la matriz");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 180, -1));
-
-        jLabel9.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jLabel9.setText("Diagonal Principal mayor a menor");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
 
         salidaBtn.setBackground(new java.awt.Color(200, 230, 144));
         salidaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,17 +168,6 @@ public class Interfaz extends javax.swing.JFrame {
         barraValores.setToolTipText("ola");
         getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
-        jScrollPane2.setViewportView(valorMatrizTxt);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 70, -1));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("ola\n");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, -1, -1));
-
         mostrarValor.setBackground(new java.awt.Color(0, 51, 51));
         mostrarValor.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         mostrarValor.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +176,7 @@ public class Interfaz extends javax.swing.JFrame {
                 mostrarValorActionPerformed(evt);
             }
         });
-        getContentPane().add(mostrarValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 50, 30));
+        getContentPane().add(mostrarValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 350, 250));
 
         jTextFieldMatrizEnter.setBackground(new java.awt.Color(0, 51, 51));
         jTextFieldMatrizEnter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -228,20 +195,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jTextFieldMatrizEnterActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldMatrizEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, -1, -1));
-
-        jPassword.setBackground(new java.awt.Color(0, 51, 51));
-        jPassword.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jPassword.setForeground(new java.awt.Color(255, 255, 255));
-        jPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 200, 30));
-
-        jLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mugiwara-logo-303FD55C54-seeklogo.com.png"))); // NOI18N
-        getContentPane().add(jLabelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, 320, 280));
+        getContentPane().add(jTextFieldMatrizEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, -1, -1));
 
         jButtonSesion.setBackground(new java.awt.Color(0, 102, 102));
         jButtonSesion.setForeground(new java.awt.Color(153, 255, 255));
@@ -251,14 +205,12 @@ public class Interfaz extends javax.swing.JFrame {
                 jButtonSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 640, -1, -1));
+        getContentPane().add(jButtonSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, -1, -1));
 
-        tMatriz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tMatrizActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tMatriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 370, 230));
+        mostrarValores.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(mostrarValores);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 430, 340));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
@@ -272,29 +224,23 @@ public class Interfaz extends javax.swing.JFrame {
         // recibe el valor de tamaño 
         //recuerda modificar aqui para usar el scrollbar
         //int n = Integer.parseInt();
-        int [][] matriz;
-        int n = 3;// esto se va cuando funcione
-        matriz = this.generarMatriz(n);
-        this.llenadoMatriz(matriz, n);
+        int n = barraValores.getValue();// esto se va cuando funcione
+        llenadoMatriz(n);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jButtonSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSesionActionPerformed
         int numero, numero2;
         String nombre = mostrarValor.getText();
         numero = Integer.parseInt(nombre);
-        String nombre2 = valorMatrizTxt.getText();
-        numero2 = Integer.parseInt(nombre2);
-        char[] passwordCharArray = jPassword.getPassword();
-        String password = new String(passwordCharArray);
+        //String nombre2 = valorMatrizTxt.getText();
+        //numero2 = Integer.parseInt(nombre2);
+        //char[] passwordCharArray = jPassword.getPassword();
+        //String password = new String(passwordCharArray);
 
-        String mensaje = "Numero 1: " + numero + "\nContraseña: " + numero2 + "\nSuma: " + (numero + numero2);
+        //String mensaje = "Numero 1: " + numero + "\nContraseña: " + numero2 + "\nSuma: " + (numero + numero2);
 
         // Mostrar un JOptionPane con la información ingresada
-        javax.swing.JOptionPane.showMessageDialog(this, mensaje, "Información de Sesión", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        //javax.swing.JOptionPane.showMessageDialog(this, mensaje, "Información de Sesión", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         // TODO add your handling code herea:
     }//GEN-LAST:event_jButtonSesionActionPerformed
 
@@ -369,10 +315,6 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mostrarValorActionPerformed
 
-    private void tMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMatrizActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tMatrizActionPerformed
-
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -417,24 +359,15 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JLabel jLabelIcon;
-    private javax.swing.JPasswordField jPassword;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldMatrizEnter;
     private javax.swing.JTextField mostrarValor;
+    private javax.swing.JTextPane mostrarValores;
     private javax.swing.JPanel salidaBtn;
-    private javax.swing.JTextField tMatriz;
-    private javax.swing.JTextPane valorMatrizTxt;
     private javax.swing.JLabel xLabel;
     // End of variables declaration//GEN-END:variables
 }
