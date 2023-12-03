@@ -31,7 +31,7 @@ import javax.swing.border.*;
 public class Interfaz extends javax.swing.JFrame {
     
 
-    Color colorFondo = new Color(200,230,144); //color del fondo 
+    Color colorFondo = new Color(255,255,240); //color del fondo 
     JLabel matriz[][]; // Matriz de jTextFields
     boolean consideracionAgregar = true;
     boolean firstTime = true;
@@ -42,7 +42,9 @@ public class Interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         errorIndicacion.setVisible(false);
     }
-
+    
+    //COEMNTARIO PARA JESUS
+    //que es esto porque tienes la imagen de un perro aqui?
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/perroIcon.png"));
         return retValue;
@@ -61,7 +63,7 @@ public class Interfaz extends javax.swing.JFrame {
             for (int j = 0; j < matriz[0].length; j++) {
                 int numeroRandom = (int) (Math.random() * 1000 + 1);
                 matriz[i][j] = new JLabel();
-                matriz[i][j].setText(String.format("%-3d", numeroRandom)); // Corregido el formato del texto
+                matriz[i][j].setText(String.format("%-3d", numeroRandom)); //Formato de la matriz
                 
                 // Calcular las coordenadas para centrar el JLabel en el panel
                 int x = (panelWidth - (n * labelSize)) / 2 + (j * labelSize);
@@ -97,15 +99,15 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        panelMatrices = new javax.swing.JPanel();
         operarBtn = new javax.swing.JButton();
         limpiarBtn = new javax.swing.JButton();
-        errorIndicacion = new javax.swing.JLabel();
-        indicacionLabel1 = new javax.swing.JLabel();
-        salidaBtn = new javax.swing.JPanel();
-        xLabel = new javax.swing.JLabel();
         barraValores = new javax.swing.JSlider();
         jPanel1 = new javax.swing.JPanel();
+        indicacionLabel2 = new javax.swing.JLabel();
+        errorIndicacion = new javax.swing.JLabel();
+        panelMatrices = new javax.swing.JPanel();
+        salidaBtn = new javax.swing.JPanel();
+        xLabel = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,23 +116,10 @@ public class Interfaz extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
-        panelMatrices.setLayout(panelMatricesLayout);
-        panelMatricesLayout.setHorizontalGroup(
-            panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
-        );
-        panelMatricesLayout.setVerticalGroup(
-            panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1010, 700));
-
         operarBtn.setBackground(new java.awt.Color(0, 102, 102));
         operarBtn.setForeground(new java.awt.Color(153, 255, 255));
         operarBtn.setText("Operar");
-        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         operarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 operarBtnMousePressed(evt);
@@ -146,7 +135,7 @@ public class Interfaz extends javax.swing.JFrame {
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
-        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limpiarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiarBtnActionPerformed(evt);
@@ -154,16 +143,40 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
 
-        errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        errorIndicacion.setForeground(new java.awt.Color(153, 0, 0));
+        barraValores.setMajorTickSpacing(1);
+        barraValores.setMaximum(10);
+        barraValores.setMinimum(3);
+        barraValores.setPaintLabels(true);
+        barraValores.setToolTipText("ola");
+        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        indicacionLabel2.setText("Tamaño de la matriz");
+        jPanel1.add(indicacionLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 170, -1));
+
+        errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 10)); // NOI18N
+        errorIndicacion.setForeground(new java.awt.Color(204, 0, 0));
         errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz!!");
-        getContentPane().add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 590, -1));
+        jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
 
-        indicacionLabel1.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        indicacionLabel1.setText("Tamaño de la matriz");
-        getContentPane().add(indicacionLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 180, -1));
+        javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
+        panelMatrices.setLayout(panelMatricesLayout);
+        panelMatricesLayout.setHorizontalGroup(
+            panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        panelMatricesLayout.setVerticalGroup(
+            panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
 
-        salidaBtn.setBackground(new java.awt.Color(200, 230, 144));
+        jPanel1.add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1010, 650));
+
+        salidaBtn.setBackground(new java.awt.Color(255, 255, 255));
+        salidaBtn.setPreferredSize(new java.awt.Dimension(40, 30));
         salidaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salidaBtnMouseClicked(evt);
@@ -179,7 +192,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        xLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        xLabel.setFont(new java.awt.Font("Dubai Light", 1, 18)); // NOI18N
         xLabel.setText("X");
         xLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,34 +215,25 @@ public class Interfaz extends javax.swing.JFrame {
             salidaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
             .addGroup(salidaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(salidaBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salidaBtnLayout.createSequentialGroup()
+                    .addContainerGap(15, Short.MAX_VALUE)
                     .addComponent(xLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(14, Short.MAX_VALUE)))
         );
         salidaBtnLayout.setVerticalGroup(
             salidaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
             .addGroup(salidaBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(salidaBtnLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(xLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salidaBtnLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 40, 40));
+        jPanel1.add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
 
-        barraValores.setMajorTickSpacing(1);
-        barraValores.setMaximum(10);
-        barraValores.setMinimum(3);
-        barraValores.setPaintLabels(true);
-        barraValores.setToolTipText("ola");
-        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
+        jLabelFondo.setFont(new java.awt.Font("Dubai Light", 0, 12)); // NOI18N
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backGroundSquare.jpg"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
         jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 820));
 
@@ -240,9 +244,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void operarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operarBtnActionPerformed
         //Recibe el valor de tamaño de la matiz
-        
-        //int n = Integer.parseInt();
-        int n = barraValores.getValue();// esto se va cuando funcione
+        int n = barraValores.getValue();
         //llenadoMatriz(n);
         if (consideracionAgregar){
             llenadoMatriz(n, panelMatrices);
@@ -351,7 +353,7 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider barraValores;
     private javax.swing.JLabel errorIndicacion;
-    private javax.swing.JLabel indicacionLabel1;
+    private javax.swing.JLabel indicacionLabel2;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
