@@ -100,8 +100,8 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         operarBtn = new javax.swing.JButton();
-        limpiarBtn = new javax.swing.JButton();
         barraValores = new javax.swing.JSlider();
+        limpiarBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         indicacionLabel2 = new javax.swing.JLabel();
         errorIndicacion = new javax.swing.JLabel();
@@ -132,6 +132,14 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
+        barraValores.setMajorTickSpacing(1);
+        barraValores.setMaximum(10);
+        barraValores.setMinimum(3);
+        barraValores.setPaintLabels(true);
+        barraValores.setToolTipText("ola");
+        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
@@ -143,14 +151,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
 
-        barraValores.setMajorTickSpacing(1);
-        barraValores.setMaximum(10);
-        barraValores.setMinimum(3);
-        barraValores.setPaintLabels(true);
-        barraValores.setToolTipText("ola");
-        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
-
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
@@ -159,7 +160,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 10)); // NOI18N
         errorIndicacion.setForeground(new java.awt.Color(204, 0, 0));
-        errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz.");
+        errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz!!");
         jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
 
         javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
@@ -233,9 +234,9 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
 
         jLabelFondo.setFont(new java.awt.Font("Dubai Light", 0, 12)); // NOI18N
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backGroundSquare.jpg"))); // NOI18N
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backGroundSquares.png"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
-        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 820));
+        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1020, 820));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 820));
 
