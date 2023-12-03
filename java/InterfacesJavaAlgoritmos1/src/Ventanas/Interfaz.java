@@ -7,6 +7,7 @@ package Ventanas;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.TextField;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.*;
+import javax.swing.border.*;
 
 
 /**
@@ -31,6 +34,7 @@ public class Interfaz extends javax.swing.JFrame {
     Color colorFondo = new Color(200,230,144); //color del fondo 
     JLabel matriz[][]; // Matriz de jTextFields
     boolean consideracionAgregar = true;
+    boolean firstTime = true;
 
     public Interfaz() {
         initComponents();
@@ -51,6 +55,7 @@ public class Interfaz extends javax.swing.JFrame {
         matriz = new JLabel[n][n]; // Cambiado de JTextField a JLabel
         int labelSize = 40; // Tamaño deseado de JLabel
         int panelWidth = panelMatrices.getWidth(); // Ancho del panel
+        int marginBottom = 2; // Ajuste para evitar que los bordes se junten
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
@@ -61,14 +66,11 @@ public class Interfaz extends javax.swing.JFrame {
                 // Calcular las coordenadas para centrar el JLabel en el panel
                 int x = (panelWidth - (n * labelSize)) / 2 + (j * labelSize);
 
-                // Establecer los límites
-                matriz[i][j].setBounds(x, 80 * i / 2, labelSize, labelSize);
+                // Establecer los límites con ajuste en la parte inferior
+                matriz[i][j].setBounds(x, 80 * i / 2, labelSize, labelSize - marginBottom);
 
                 // Configurar el borde solo en la parte inferior para el JLabel
-                matriz[i][j].setBorder(new CompoundBorder(
-                    new LineBorder(Color.BLACK), 
-                    new MatteBorder(0, 0, 1, 0, Color.BLACK) // 1 píxel en la parte inferior
-                ));
+                matriz[i][j].setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK)); // 1 píxel en la parte inferior
 
                 // Añadir el JLabel al panelMatrices
                 panelMatrices.add(matriz[i][j]);
@@ -79,7 +81,6 @@ public class Interfaz extends javax.swing.JFrame {
         panelMatrices.revalidate();
         panelMatrices.repaint();
     }
-
     
     public void borradoMatriz(JLabel[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
@@ -129,7 +130,7 @@ public class Interfaz extends javax.swing.JFrame {
         operarBtn.setBackground(new java.awt.Color(0, 102, 102));
         operarBtn.setForeground(new java.awt.Color(153, 255, 255));
         operarBtn.setText("Operar");
-        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         operarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 operarBtnMousePressed(evt);
@@ -145,6 +146,7 @@ public class Interfaz extends javax.swing.JFrame {
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
+        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limpiarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiarBtnActionPerformed(evt);
@@ -222,6 +224,7 @@ public class Interfaz extends javax.swing.JFrame {
         barraValores.setMinimum(3);
         barraValores.setPaintLabels(true);
         barraValores.setToolTipText("ola");
+        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -251,10 +254,14 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_operarBtnActionPerformed
 
     private void limpiarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarBtnActionPerformed
-        borradoMatriz(matriz);
+        
+        if (firstTime){
+            firstTime = false;
+        }
         if (!consideracionAgregar){
             consideracionAgregar = true;
             errorIndicacion.setVisible(false);
+            borradoMatriz(matriz);
         }else{
             
         }
