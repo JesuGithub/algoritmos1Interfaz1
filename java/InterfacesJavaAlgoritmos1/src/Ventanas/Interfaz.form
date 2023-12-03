@@ -132,7 +132,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tienes que presionar el bot&#xf3;n &quot;LIMPIAR&quot; para operar otra matriz!!"/>
+            <Property name="text" type="java.lang.String" value="Tienes que presionar el bot&#xf3;n &quot;LIMPIAR&quot; para operar otra matriz."/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

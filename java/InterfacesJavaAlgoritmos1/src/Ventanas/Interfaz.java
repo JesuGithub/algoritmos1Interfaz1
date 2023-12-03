@@ -159,7 +159,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 10)); // NOI18N
         errorIndicacion.setForeground(new java.awt.Color(204, 0, 0));
-        errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz!!");
+        errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz.");
         jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
 
         javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
