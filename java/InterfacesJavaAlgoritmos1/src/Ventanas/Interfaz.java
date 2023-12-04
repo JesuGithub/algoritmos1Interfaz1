@@ -4,6 +4,7 @@
  */
 package Ventanas;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -52,28 +53,30 @@ public class Interfaz extends javax.swing.JFrame {
    
     //Matriz: genera y rellena
     public void llenadoMatriz(int n, JPanel panelMatrices) {
-        StringBuilder superTexto = new StringBuilder();
-
-        matriz = new JLabel[n][n]; // Cambiado de JTextField a JLabel
-        int labelSize = 40; // Tamaño deseado de JLabel
+        matriz = new JLabel[n][n]; // JLabel
+        int labelSize = 35; // Tamaño deseado de JLabel
         int panelWidth = panelMatrices.getWidth(); // Ancho del panel
-        int marginBottom = 2; // Ajuste para evitar que los bordes se junten
+        int spacingX = 5; // Espaciado horizontal
+        int spacingY = 5; // Espaciado vertical
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
                 int numeroRandom = (int) (Math.random() * 1000 + 1);
-                matriz[i][j] = new JLabel();
-                matriz[i][j].setText(String.format("%-3d", numeroRandom)); //Formato de la matriz
+                matriz[i][j] = new JLabel(); // JLabel
+                matriz[i][j].setText(String.valueOf(numeroRandom)); 
                 
-                // Calcular las coordenadas para centrar el JLabel en el panel
-                int x = (panelWidth - (n * labelSize)) / 2 + (j * labelSize);
+                // Calcular las coordenadas para centrar el JTextPane en el panel
+                int x = (panelWidth - (n * labelSize + (n - 1) * spacingX)) / 2 + (j * (labelSize + spacingX));
+                int y = 80 * i / 2 + (i * spacingY);
 
-                // Establecer los límites con ajuste en la parte inferior
-                matriz[i][j].setBounds(x, 80 * i / 2, labelSize, labelSize - marginBottom);
+                // Establecer los límites
+                matriz[i][j].setBounds(x, y, labelSize, labelSize);
+                matriz[i][j].setBorder(new LineBorder(Color.BLACK));
 
-                // Configurar el borde solo en la parte inferior para el JLabel
-                matriz[i][j].setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK)); // 1 píxel en la parte inferior
-
+                // Configurar la alineación del texto para centrarlo en el JLabel
+                matriz[i][j].setHorizontalAlignment(SwingConstants.CENTER);
+                matriz[i][j].setVerticalAlignment(SwingConstants.CENTER);
+                
                 // Añadir el JLabel al panelMatrices
                 panelMatrices.add(matriz[i][j]);
             }
@@ -93,19 +96,30 @@ public class Interfaz extends javax.swing.JFrame {
         panelMatrices.revalidate(); // Actualiza el diseño del panel
         panelMatrices.repaint();    // Repinta el panel para reflejar los cambios
     }
+    
+    public void showPanel(JPanel panel){
+        panel.setSize(1010,350);
+        panel.setLocation(0,0);
+        
+        contentPanel.removeAll();
+        contentPanel.add(panel, BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
           
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        operarBtn = new javax.swing.JButton();
-        barraValores = new javax.swing.JSlider();
-        limpiarBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        barraValores = new javax.swing.JSlider();
+        operarBtn = new javax.swing.JButton();
+        limpiarBtn = new javax.swing.JButton();
         indicacionLabel2 = new javax.swing.JLabel();
         errorIndicacion = new javax.swing.JLabel();
         panelMatrices = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
         salidaBtn = new javax.swing.JPanel();
         xLabel = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
@@ -114,12 +128,24 @@ public class Interfaz extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
+        setSize(new java.awt.Dimension(1000, 8000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(jLabelFondo.getBackground());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barraValores.setMajorTickSpacing(1);
+        barraValores.setMaximum(10);
+        barraValores.setMinimum(3);
+        barraValores.setPaintLabels(true);
+        barraValores.setToolTipText("ola");
+        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         operarBtn.setBackground(new java.awt.Color(0, 102, 102));
         operarBtn.setForeground(new java.awt.Color(153, 255, 255));
         operarBtn.setText("Operar");
-        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         operarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 operarBtnMousePressed(evt);
@@ -130,29 +156,23 @@ public class Interfaz extends javax.swing.JFrame {
                 operarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
-
-        barraValores.setMajorTickSpacing(1);
-        barraValores.setMaximum(10);
-        barraValores.setMinimum(3);
-        barraValores.setPaintLabels(true);
-        barraValores.setToolTipText("ola");
-        barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+        jPanel1.add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
 
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
-        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                limpiarBtnMousePressed(evt);
+            }
+        });
         limpiarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, -1, -1));
 
         indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         indicacionLabel2.setText("Tamaño de la matriz");
@@ -163,18 +183,34 @@ public class Interfaz extends javax.swing.JFrame {
         errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz!!");
         jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
 
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 340, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
         panelMatrices.setLayout(panelMatricesLayout);
         panelMatricesLayout.setHorizontalGroup(
             panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMatricesLayout.createSequentialGroup()
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelMatricesLayout.setVerticalGroup(
             panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(panelMatricesLayout.createSequentialGroup()
+                .addContainerGap(484, Short.MAX_VALUE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jPanel1.add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1010, 650));
+        jPanel1.add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1010, 830));
 
         salidaBtn.setBackground(new java.awt.Color(255, 255, 255));
         salidaBtn.setPreferredSize(new java.awt.Dimension(40, 30));
@@ -236,9 +272,9 @@ public class Interfaz extends javax.swing.JFrame {
         jLabelFondo.setFont(new java.awt.Font("Dubai Light", 0, 12)); // NOI18N
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backGroundSquares.png"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
-        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1020, 820));
+        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1010, 1050));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 820));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 990));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,25 +286,19 @@ public class Interfaz extends javax.swing.JFrame {
         if (consideracionAgregar){
             llenadoMatriz(n, panelMatrices);
             consideracionAgregar = false;
+            
+            Operacion1 panel1 = new Operacion1();
+            showPanel(panel1);
+            panel1.setMatriz(matriz);
+            panel1.diagonalPrincipal(matriz);
+            
+            contentPanel.setVisible(true);
         }else{
             errorIndicacion.setVisible(true);
         }
         
-    }//GEN-LAST:event_operarBtnActionPerformed
-
-    private void limpiarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarBtnActionPerformed
         
-        if (firstTime){
-            firstTime = false;
-        }
-        if (!consideracionAgregar){
-            consideracionAgregar = true;
-            errorIndicacion.setVisible(false);
-            borradoMatriz(matriz);
-        }else{
-            
-        }
-    }//GEN-LAST:event_limpiarBtnActionPerformed
+    }//GEN-LAST:event_operarBtnActionPerformed
 
     private void xLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xLabelMouseEntered
         
@@ -314,6 +344,25 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_salidaBtnMouseClicked
 
+    private void limpiarBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarBtnMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_limpiarBtnMousePressed
+
+    private void limpiarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarBtnActionPerformed
+       if (firstTime){
+            firstTime = false;
+        }
+        if (!consideracionAgregar){
+            consideracionAgregar = true;
+            errorIndicacion.setVisible(false);
+            borradoMatriz(matriz);
+
+            contentPanel.setVisible(false);
+        }else{
+
+        }
+    }//GEN-LAST:event_limpiarBtnActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -353,6 +402,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider barraValores;
+    private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel errorIndicacion;
     private javax.swing.JLabel indicacionLabel2;
     private javax.swing.JLabel jLabelFondo;
