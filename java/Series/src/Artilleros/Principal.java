@@ -1,3 +1,5 @@
+package Artilleros;
+
 import java.util.Scanner;
 
 /**
@@ -51,7 +53,7 @@ public class Principal {
         
         System.out.print("Cuantas veces desea ejecutar: ");
         int repeticion = lectora.nextInt();
-        Lai promedio = new Lai();
+        /*Lai promedio = new Lai();
         
         do {            
         //llamando artillero
@@ -80,6 +82,6 @@ public class Principal {
         System.out.println("El artillero " + nombreArtillero + " " + Lai.Condicion(altura));
         --repeticion;
         
-        } while (repeticion != 0);
+        } while (repeticion != 0);*/
     }
 }
