@@ -18,6 +18,7 @@ public class Despacho {
         double[][] matrizDatos = new double[cantidad][4];
         Metodos.almacenarDatos(vectorNombres, matrizDatos, nombreArchivo);
         Metodos.imprimirDatos(vectorNombres, matrizDatos);
+        Metodos.mostrarDatos(vectorNombres, matrizDatos);
     }
     
 }
