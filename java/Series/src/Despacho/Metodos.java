@@ -100,7 +100,7 @@ public class Metodos {
                 tarifa = calcularTarifa(peso);
             }
             
-            System.out.printf("%-10s %-20s %04.2f\n", nombres[i], tipoEnvio, tarifa);
+            System.out.printf("%-10s %-20s %07.2f\n", nombres[i], tipoEnvio, tarifa);
         }
     }
 }
