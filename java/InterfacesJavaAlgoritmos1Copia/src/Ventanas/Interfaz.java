@@ -142,7 +142,7 @@ public class Interfaz extends javax.swing.JFrame {
         barraValores.setPaintLabels(true);
         barraValores.setToolTipText("ola");
         barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 210, 50));
+        jPanel1.add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 210, 50));
 
         operarBtn.setBackground(new java.awt.Color(0, 102, 102));
         operarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -159,7 +159,7 @@ public class Interfaz extends javax.swing.JFrame {
                 operarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
+        jPanel1.add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, 30));
 
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
         limpiarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -176,12 +176,12 @@ public class Interfaz extends javax.swing.JFrame {
                 limpiarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, -1));
+        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, 30));
 
         indicacionLabel2.setBackground(new java.awt.Color(255, 255, 255));
         indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         indicacionLabel2.setText("Tamaño de la matriz");
-        jPanel1.add(indicacionLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 200, -1));
+        jPanel1.add(indicacionLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 200, -1));
 
         errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         errorIndicacion.setForeground(new java.awt.Color(204, 0, 0));

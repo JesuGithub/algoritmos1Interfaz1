@@ -43,7 +43,7 @@ public class Operacion4 extends javax.swing.JPanel {
     
     public void llamador(){
         mostrarMayor.setText(String.valueOf(mayor(matriz)));
-        mostrarSerie.setText("La serie hasta el numero "+ mayor(matriz) + " es: " +generarFibonacciHasta(mayor(matriz))); 
+        mostrarSerie.setText(generarFibonacciHasta(mayor(matriz))); 
     }
     
     public static String generarFibonacciHasta(int limite) {
@@ -51,7 +51,7 @@ public class Operacion4 extends javax.swing.JPanel {
         
         int a = 0, b = 1;
         while (a <= limite) {
-            fibonacciSeries += a + " ";
+            fibonacciSeries += a + "  ";
             int temp = a + b;
             a = b;
             b = temp;
@@ -92,27 +92,30 @@ public class Operacion4 extends javax.swing.JPanel {
         izquierdaBtn = new javax.swing.JButton();
         mostrarMayor = new javax.swing.JTextPane();
 
-        mostrarSerie.setFont(new java.awt.Font("Eras Medium ITC", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        mostrarSerie.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
+        mostrarSerie.setDisabledTextColor(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(mostrarSerie);
 
-        tituloLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tituloLabel6.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel6.setText("4_Serie Fibonacci hasta numero mayor");
 
-        tituloLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tituloLabel7.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel7.setText("Numero mayor: ");
 
-        tituloLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tituloLabel8.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel8.setText("Serie Fibonacci:");
 
-        izquierdaBtn.setText("Izquierda");
-        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        izquierdaBtn.setText("Anterior");
+        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izquierdaBtnActionPerformed(evt);
             }
         });
 
-        mostrarMayor.setFont(new java.awt.Font("Eras Medium ITC", 0, 18)); // NOI18N
+        mostrarMayor.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,40 +124,45 @@ public class Operacion4 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tituloLabel8)
-                            .addComponent(tituloLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mostrarMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(izquierdaBtn)
-                        .addGap(221, 221, 221)
-                        .addComponent(tituloLabel6)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addGap(153, 153, 153)
+                        .addComponent(tituloLabel7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tituloLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mostrarMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(164, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(izquierdaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(tituloLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(334, 334, 334))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloLabel6)
-                    .addComponent(izquierdaBtn))
-                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tituloLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloLabel8)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(100, 100, 100))
+                        .addContainerGap()
+                        .addComponent(tituloLabel6)
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(mostrarMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(tituloLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mostrarMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(38, 38, 38)
+                        .addComponent(izquierdaBtn)))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(tituloLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
