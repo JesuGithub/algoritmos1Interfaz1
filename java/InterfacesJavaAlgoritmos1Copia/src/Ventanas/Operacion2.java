@@ -92,6 +92,10 @@ public class Operacion2 extends javax.swing.JPanel {
         mostrarSuma.setEditable(false);
     }
     
+  
+    
+
+    
 
     
     /**
