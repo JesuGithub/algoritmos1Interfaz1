@@ -54,18 +54,74 @@ public class Operacion2 extends javax.swing.JPanel {
         int n = matriz.length; // Tamaño de la matriz
 
         int[] arregloSecundario = new int[n];
-
+        JLabel [] diagonalSecundaria = new JLabel[n];
         
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
+                if (i==j){
+                String textoVector = matriz[i][j].getText();
+                // Calcular las coordenadas para centrar el JTextPane en el panel
+                int x = (panelWidth - (n * labelSize + (n - 1) * spacingX)) / 2 + (j * (labelSize + spacingX));
+
+                    // Crear el JTextPane y configurar los límites
+                diagonalSecundaria[i] = new JLabel();
+                diagonalSecundaria[i].setBounds(x, 72, labelSize, labelSize);
+                diagonalSecundaria[i].setBorder(new LineBorder(new Color(0,102,102)));
+
+                diagonalSecundaria[i].setBackground(new Color(255,255,255));
+
+                diagonalSecundaria[i].setText(textoVector);
+                    
+                diagonalSecundaria[i].setHorizontalAlignment(SwingConstants.CENTER);
+                diagonalSecundaria[i].setVerticalAlignment(SwingConstants.CENTER);
+
+                    //matrizCopia[i].setEditable(false);
+
+                this.add(diagonalSecundaria[i]); // 
+
+                    // Establecer el z-order para que esté en la parte superior
+                this.setComponentZOrder(diagonalSecundaria[i], 0);
+                }
+                
                 if (i + j == n-1) {
                    arregloSecundario[i] = Integer.parseInt(matriz[i][j].getText());
                 }
             }
         }
+        //addTextPane(tituloLabel1, n, TOOL_TIP_TEXT_KEY, spacingY);
         suma(arregloSecundario);
     }
-    
+    /*
+     public void addTextPane(JLabel coordenada, int j, String contenido, int posicionY){
+        int labelSize = 35; // Tamaño deseado de JLabel
+        int panelWidth = this.getWidth(); // Ancho del panel
+        int spacingX = 5; // Espaciado horizontal
+        int spacingY = 5; // Espaciado vertical
+        int n = matriz.length; // Tamaño de la matriz
+        
+        // Calcular las coordenadas para centrar el JTextPane en el panel
+        int x = (panelWidth - (n * labelSize + (n - 1) * spacingX)) / 2 + (j * (labelSize + spacingX));
+
+        // Crear el JTextPane y configurar los límites
+        coordenada = new JLabel();
+        coordenada.setBounds(x, posicionY, labelSize, labelSize);
+        coordenada.setBorder(new LineBorder(new Color(0,102,102)));
+
+        coordenada.setBackground(new Color(255,255,255));
+        
+        coordenada.setHorizontalAlignment(SwingConstants.CENTER);
+        coordenada.setVerticalAlignment(SwingConstants.CENTER);
+
+        coordenada.setText(contenido);
+        
+        //coordenada.setEditable(false);
+
+        this.add(coordenada); // Hacer el JTextPane no editable
+
+        // Establecer el z-order para que esté en la parte superior
+        this.setComponentZOrder(coordenada, 0);
+    }
+     */
     public void suma(int[] diagonalSegundaria){
         int labelSize = 35; // Tamaño deseado de JLabel
         int panelWidth = this.getWidth(); // Ancho del panel
@@ -91,12 +147,6 @@ public class Operacion2 extends javax.swing.JPanel {
         
         mostrarSuma.setEditable(false);
     }
-    
-  
-    
-
-    
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,19 +202,21 @@ public class Operacion2 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tituloLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(326, Short.MAX_VALUE)
                         .addComponent(tituloLabel1)
-                        .addGap(165, 165, 165)))
+                        .addGap(165, 165, 165))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(tituloLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(izquierdaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(derechaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(104, 104, 104))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(304, 304, 304))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,12 +226,12 @@ public class Operacion2 extends javax.swing.JPanel {
                     .addComponent(tituloLabel1)
                     .addComponent(derechaBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloLabel3)
-                    .addComponent(izquierdaBtn))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(izquierdaBtn)
+                    .addComponent(tituloLabel3))
+                .addGap(54, 54, 54)
                 .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
