@@ -42,6 +42,7 @@ public class Operacion3 extends javax.swing.JPanel {
         numeroAElevar = BigInteger.valueOf(menor(matriz)).pow(mayor(matriz));
         
         mostrarSuma.setText(String.valueOf(numeroAElevar));
+        mostrarSuma.setEditable(false);
     }
     
     public void showPanel(JPanel panel){

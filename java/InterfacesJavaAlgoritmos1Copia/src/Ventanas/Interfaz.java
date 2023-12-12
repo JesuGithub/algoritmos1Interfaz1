@@ -44,8 +44,7 @@ public class Interfaz extends javax.swing.JFrame {
         errorIndicacion.setVisible(false);
     }
     
-    //COEMNTARIO PARA JESUS
-    //que es esto porque tienes la imagen de un perro aqui?
+
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/perroIcon.png"));
         return retValue;
@@ -61,7 +60,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
-                int numeroRandom = (int) (Math.random() * 1000 + 1);
+                int numeroRandom = (int) (Math.random() * 1000);
                 matriz[i][j] = new JLabel(); // JLabel
                 matriz[i][j].setText(String.valueOf(numeroRandom)); 
                 

@@ -43,7 +43,9 @@ public class Operacion4 extends javax.swing.JPanel {
     
     public void llamador(){
         mostrarMayor.setText(String.valueOf(mayor(matriz)));
+        mostrarMayor.setEditable(false);
         mostrarSerie.setText(generarFibonacciHasta(mayor(matriz))); 
+        mostrarSerie.setEditable(false);
     }
     
     public static String generarFibonacciHasta(int limite) {
@@ -141,8 +143,8 @@ public class Operacion4 extends javax.swing.JPanel {
                         .addComponent(izquierdaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(104, 104, 104))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(tituloLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(334, 334, 334))))
+                        .addComponent(tituloLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(355, 355, 355))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
