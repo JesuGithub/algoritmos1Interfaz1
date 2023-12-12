@@ -32,7 +32,7 @@ import javax.swing.border.*;
 public class Interfaz extends javax.swing.JFrame {
     
 
-    Color colorFondo = new Color(255,255,240); //color del fondo 
+    Color colorFondo = new Color(255,255,255); //color del fondo 
     JLabel matriz[][]; // Matriz de jTextFields
     boolean consideracionAgregar = true;
     boolean firstTime = true;
@@ -122,9 +122,11 @@ public class Interfaz extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         salidaBtn = new javax.swing.JPanel();
         xLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
@@ -140,12 +142,13 @@ public class Interfaz extends javax.swing.JFrame {
         barraValores.setPaintLabels(true);
         barraValores.setToolTipText("ola");
         barraValores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+        jPanel1.add(barraValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 210, 50));
 
         operarBtn.setBackground(new java.awt.Color(0, 102, 102));
+        operarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         operarBtn.setForeground(new java.awt.Color(153, 255, 255));
         operarBtn.setText("Operar");
-        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         operarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 operarBtnMousePressed(evt);
@@ -156,12 +159,13 @@ public class Interfaz extends javax.swing.JFrame {
                 operarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+        jPanel1.add(operarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         limpiarBtn.setBackground(new java.awt.Color(0, 102, 102));
+        limpiarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
-        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limpiarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 limpiarBtnMousePressed(evt);
@@ -172,16 +176,21 @@ public class Interfaz extends javax.swing.JFrame {
                 limpiarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, -1, -1));
+        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, -1));
 
-        indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        indicacionLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        indicacionLabel2.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         indicacionLabel2.setText("Tamaño de la matriz");
-        jPanel1.add(indicacionLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 170, -1));
+        jPanel1.add(indicacionLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 200, -1));
 
-        errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 10)); // NOI18N
+        errorIndicacion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         errorIndicacion.setForeground(new java.awt.Color(204, 0, 0));
         errorIndicacion.setText("Tienes que presionar el botón \"LIMPIAR\" para operar otra matriz!!");
-        jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
+        jPanel1.add(errorIndicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
+
+        panelMatrices.setBackground(new java.awt.Color(255, 255, 255));
+
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
@@ -191,7 +200,7 @@ public class Interfaz extends javax.swing.JFrame {
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelMatricesLayout = new javax.swing.GroupLayout(panelMatrices);
@@ -204,13 +213,13 @@ public class Interfaz extends javax.swing.JFrame {
         );
         panelMatricesLayout.setVerticalGroup(
             panelMatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMatricesLayout.createSequentialGroup()
-                .addContainerGap(484, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMatricesLayout.createSequentialGroup()
+                .addContainerGap(458, Short.MAX_VALUE)
                 .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(72, 72, 72))
         );
 
-        jPanel1.add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1010, 830));
+        jPanel1.add(panelMatrices, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1010, 810));
 
         salidaBtn.setBackground(new java.awt.Color(255, 255, 255));
         salidaBtn.setPreferredSize(new java.awt.Dimension(40, 30));
@@ -269,10 +278,26 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1.add(salidaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, -1, -1));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1010, 40));
+
+        jLabelFondo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelFondo.setFont(new java.awt.Font("Dubai Light", 0, 12)); // NOI18N
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backGroundSquares.png"))); // NOI18N
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BackGroound 1.jpg"))); // NOI18N
         jLabelFondo.setText("jLabelFondo");
-        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1010, 1050));
+        jPanel1.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1010, 1050));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 990));
 
@@ -407,6 +432,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel indicacionLabel2;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JButton limpiarBtn;
     private javax.swing.JButton operarBtn;

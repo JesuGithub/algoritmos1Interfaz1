@@ -54,9 +54,9 @@ public class Operacion1 extends javax.swing.JPanel {
         // Crear el JTextPane y configurar los límites
         coordenada = new JLabel();
         coordenada.setBounds(x, posicionY, labelSize, labelSize);
-        coordenada.setBorder(new LineBorder(Color.BLACK));
+        coordenada.setBorder(new LineBorder(new Color(0,102,102)));
 
-        coordenada.setBackground(new Color(0,0,0));
+        coordenada.setBackground(new Color(255,255,255));
         
         coordenada.setHorizontalAlignment(SwingConstants.CENTER);
         coordenada.setVerticalAlignment(SwingConstants.CENTER);
@@ -89,10 +89,10 @@ public class Operacion1 extends javax.swing.JPanel {
 
                     // Crear el JTextPane y configurar los límites
                     matrizCopia[i] = new JLabel();
-                    matrizCopia[i].setBounds(x, 110, labelSize, labelSize);
+                    matrizCopia[i].setBounds(x, 60, labelSize, labelSize);
                     matrizCopia[i].setBorder(new LineBorder(new Color(0,102,102)));
 
-                    matrizCopia[i].setBackground(new Color(0,0,0));
+                    matrizCopia[i].setBackground(new Color(255,255,255));
 
                     matrizCopia[i].setText(textoMatriz);
                     
@@ -125,7 +125,7 @@ public class Operacion1 extends javax.swing.JPanel {
         
         Arrays.sort(numeros);
         for (int i = 0; i < matriz.length; i++) {
-            addTextPane(arregloOrdenado[i], i, String.valueOf(numeros[numeros.length - (i+1)]), 200);
+            addTextPane(arregloOrdenado[i], i, String.valueOf(numeros[numeros.length - (i+1)]), 105);
         }
     }
 
@@ -143,10 +143,12 @@ public class Operacion1 extends javax.swing.JPanel {
         tituloLabel2 = new javax.swing.JLabel();
         derechaBtn = new javax.swing.JButton();
 
-        tituloLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        tituloLabel.setText("Diagonal Principal Ordenada:");
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        tituloLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tituloLabel.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
+        tituloLabel.setText("Diagonal Ordenada:");
+
+        tituloLabel1.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel1.setText("1_Ordenar la diagonal principal de mayor a menor");
         tituloLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -154,11 +156,11 @@ public class Operacion1 extends javax.swing.JPanel {
             }
         });
 
-        tituloLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tituloLabel2.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel2.setText("Diagonal Principal:");
 
         derechaBtn.setText("Derecha");
-        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derechaBtnActionPerformed(evt);
@@ -170,33 +172,31 @@ public class Operacion1 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tituloLabel2)
-                    .addComponent(tituloLabel))
-                .addGap(500, 734, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(321, Short.MAX_VALUE)
                 .addComponent(tituloLabel1)
-                .addGap(142, 142, 142)
+                .addGap(156, 156, 156)
                 .addComponent(derechaBtn)
-                .addGap(37, 37, 37))
+                .addGap(105, 105, 105))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloLabel)
+                    .addComponent(tituloLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloLabel1)
-                    .addComponent(derechaBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                    .addComponent(derechaBtn)
+                    .addComponent(tituloLabel1))
+                .addGap(31, 31, 31)
                 .addComponent(tituloLabel2)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
                 .addComponent(tituloLabel)
-                .addGap(126, 126, 126))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
-
-        tituloLabel1.getAccessibleContext().setAccessibleName("1_Ordenar la diagonal principal de mayor a menor");
     }// </editor-fold>//GEN-END:initComponents
 
     private void derechaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaBtnActionPerformed
