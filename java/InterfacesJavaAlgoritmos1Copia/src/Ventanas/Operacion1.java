@@ -128,6 +128,8 @@ public class Operacion1 extends javax.swing.JPanel {
             addTextPane(arregloOrdenado[i], i, String.valueOf(numeros[numeros.length - (i+1)]), 105);
         }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,7 +161,7 @@ public class Operacion1 extends javax.swing.JPanel {
         tituloLabel2.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel2.setText("Diagonal Principal:");
 
-        derechaBtn.setText("Derecha");
+        derechaBtn.setText("Siguiente");
         derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,11 +174,11 @@ public class Operacion1 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
+                .addContainerGap(308, Short.MAX_VALUE)
                 .addComponent(tituloLabel1)
-                .addGap(156, 156, 156)
+                .addGap(164, 164, 164)
                 .addComponent(derechaBtn)
-                .addGap(105, 105, 105))
+                .addGap(104, 104, 104))
             .addGroup(layout.createSequentialGroup()
                 .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

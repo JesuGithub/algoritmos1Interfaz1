@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 /**
@@ -81,14 +82,17 @@ public class Operacion2 extends javax.swing.JPanel {
             sumita += diagonalSegundaria[i]; 
             
         }
-        mostrarSuma.setBorder(new LineBorder(Color.BLACK));
+        mostrarSuma.setBorder(new LineBorder(new Color(255,255,255)));
 
-        mostrarSuma.setBackground(new Color(0,0,0));
+        mostrarSuma.setBackground(new Color(255,255,255));
 
-        mostrarSuma.setText("La suma de " + texto + " es = " + sumita + ", y el promedio es: " + String.format("%3.2f", ((double)(sumita))/ n ));
+        mostrarSuma.setText("Promedio: " + sumita + " / "+n + " = "+ String.format("%3.2f", ((double)(sumita))/ n ));
 
+        
         mostrarSuma.setEditable(false);
     }
+    
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,12 +106,13 @@ public class Operacion2 extends javax.swing.JPanel {
         tituloLabel1 = new javax.swing.JLabel();
         izquierdaBtn = new javax.swing.JButton();
         derechaBtn = new javax.swing.JButton();
-        tituloLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         mostrarSuma = new javax.swing.JTextPane();
         tituloLabel3 = new javax.swing.JLabel();
 
-        tituloLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(988, 214));
+
+        tituloLabel1.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel1.setText("2_Promedio de la suma de la diagonal principal");
         tituloLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -115,68 +120,62 @@ public class Operacion2 extends javax.swing.JPanel {
             }
         });
 
-        izquierdaBtn.setText("Izquierda");
-        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        izquierdaBtn.setText("Anterior");
+        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izquierdaBtnActionPerformed(evt);
             }
         });
 
-        derechaBtn.setText("Derecha");
-        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        derechaBtn.setText("Siguiente");
+        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derechaBtnActionPerformed(evt);
             }
         });
 
-        tituloLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        tituloLabel2.setText("Promedio:");
+        mostrarSuma.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
 
-        mostrarSuma.setFont(new java.awt.Font("Eras Medium ITC", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(mostrarSuma);
-
-        tituloLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        tituloLabel3.setText("Promedio:");
+        tituloLabel3.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
+        tituloLabel3.setText("Diagonal secundaria:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(izquierdaBtn)
-                .addGap(192, 192, 192)
-                .addComponent(tituloLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(derechaBtn)
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tituloLabel2)
-                    .addComponent(tituloLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 187, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tituloLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tituloLabel1)
+                        .addGap(172, 172, 172)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(izquierdaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(derechaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tituloLabel1)
-                        .addComponent(izquierdaBtn))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloLabel1)
                     .addComponent(derechaBtn))
-                .addGap(36, 36, 36)
-                .addComponent(tituloLabel3)
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(izquierdaBtn)
+                    .addComponent(tituloLabel3))
+                .addGap(18, 18, 18)
+                .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,10 +201,8 @@ public class Operacion2 extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton derechaBtn;
     private javax.swing.JButton izquierdaBtn;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane mostrarSuma;
     private javax.swing.JLabel tituloLabel1;
-    private javax.swing.JLabel tituloLabel2;
     private javax.swing.JLabel tituloLabel3;
     // End of variables declaration//GEN-END:variables
 }
