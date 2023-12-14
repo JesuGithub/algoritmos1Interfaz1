@@ -110,7 +110,7 @@ public class Operacion4 extends javax.swing.JPanel {
         tituloLabel8.setText("Serie Fibonacci:");
 
         izquierdaBtn.setText("Anterior");
-        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         izquierdaBtn.setPreferredSize(new java.awt.Dimension(79, 28));
         izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -162,7 +162,7 @@ public class Operacion1 extends javax.swing.JPanel {
         tituloLabel2.setText("Diagonal Principal:");
 
         derechaBtn.setText("Siguiente");
-        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derechaBtnActionPerformed(evt);

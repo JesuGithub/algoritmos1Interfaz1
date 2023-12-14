@@ -125,7 +125,7 @@ public class Operacion3 extends javax.swing.JPanel {
         });
 
         izquierdaBtn.setText("Anterior");
-        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izquierdaBtnActionPerformed(evt);
@@ -133,7 +133,7 @@ public class Operacion3 extends javax.swing.JPanel {
         });
 
         derechaBtn.setText("Siguiente");
-        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derechaBtnActionPerformed(evt);

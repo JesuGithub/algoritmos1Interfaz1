@@ -147,7 +147,7 @@ public class Interfaz extends javax.swing.JFrame {
         operarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         operarBtn.setForeground(new java.awt.Color(153, 255, 255));
         operarBtn.setText("Operar");
-        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        operarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         operarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 operarBtnMousePressed(evt);
@@ -164,7 +164,7 @@ public class Interfaz extends javax.swing.JFrame {
         limpiarBtn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         limpiarBtn.setForeground(new java.awt.Color(153, 255, 255));
         limpiarBtn.setText("Limpiar");
-        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limpiarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 limpiarBtnMousePressed(evt);
@@ -317,6 +317,8 @@ public class Interfaz extends javax.swing.JFrame {
             panel1.diagonalPrincipal(matriz);
             
             contentPanel.setVisible(true);
+            
+            operarBtn.setVisible(false);
         }else{
             errorIndicacion.setVisible(true);
         }
@@ -382,6 +384,8 @@ public class Interfaz extends javax.swing.JFrame {
             borradoMatriz(matriz);
 
             contentPanel.setVisible(false);
+            
+            operarBtn.setVisible(true);
         }else{
 
         }

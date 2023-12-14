@@ -58,7 +58,7 @@ public class Operacion2 extends javax.swing.JPanel {
         
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
-                if (i==j){
+                if (i + j == matriz.length-1){
                 String textoVector = matriz[i][j].getText();
                 // Calcular las coordenadas para centrar el JTextPane en el panel
                 int x = (panelWidth - (n * labelSize + (n - 1) * spacingX)) / 2 + (j * (labelSize + spacingX));
@@ -158,10 +158,10 @@ public class Operacion2 extends javax.swing.JPanel {
     private void initComponents() {
 
         tituloLabel1 = new javax.swing.JLabel();
-        izquierdaBtn = new javax.swing.JButton();
         derechaBtn = new javax.swing.JButton();
         mostrarSuma = new javax.swing.JTextPane();
         tituloLabel3 = new javax.swing.JLabel();
+        izquierdaBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(988, 214));
@@ -174,16 +174,8 @@ public class Operacion2 extends javax.swing.JPanel {
             }
         });
 
-        izquierdaBtn.setText("Anterior");
-        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                izquierdaBtnActionPerformed(evt);
-            }
-        });
-
         derechaBtn.setText("Siguiente");
-        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        derechaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         derechaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derechaBtnActionPerformed(evt);
@@ -194,6 +186,14 @@ public class Operacion2 extends javax.swing.JPanel {
 
         tituloLabel3.setFont(new java.awt.Font("Dubai Light", 1, 16)); // NOI18N
         tituloLabel3.setText("Diagonal secundaria:");
+
+        izquierdaBtn.setText("Anterior");
+        izquierdaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        izquierdaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                izquierdaBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -210,8 +210,8 @@ public class Operacion2 extends javax.swing.JPanel {
                         .addComponent(tituloLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(izquierdaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(derechaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(derechaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(izquierdaBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(104, 104, 104))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -226,12 +226,12 @@ public class Operacion2 extends javax.swing.JPanel {
                     .addComponent(tituloLabel1)
                     .addComponent(derechaBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(izquierdaBtn)
-                    .addComponent(tituloLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloLabel3)
+                    .addComponent(izquierdaBtn))
                 .addGap(54, 54, 54)
                 .addComponent(mostrarSuma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -239,19 +239,19 @@ public class Operacion2 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tituloLabel1MouseEntered
 
-    private void izquierdaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaBtnActionPerformed
-        Operacion1 panel1 = new Operacion1();
-        showPanel(panel1);
-        panel1.setMatriz(matriz);
-        panel1.diagonalPrincipal(matriz);
-    }//GEN-LAST:event_izquierdaBtnActionPerformed
-
     private void derechaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaBtnActionPerformed
         Operacion3 panel3 = new Operacion3();
         showPanel(panel3);
         panel3.setMatriz(matriz);
         panel3.llamador();
     }//GEN-LAST:event_derechaBtnActionPerformed
+
+    private void izquierdaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaBtnActionPerformed
+        Operacion1 panel1 = new Operacion1();
+        showPanel(panel1);
+        panel1.setMatriz(matriz);
+        panel1.diagonalPrincipal(matriz);
+    }//GEN-LAST:event_izquierdaBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
