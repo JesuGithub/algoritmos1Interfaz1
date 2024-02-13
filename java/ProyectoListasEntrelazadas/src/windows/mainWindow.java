@@ -9,6 +9,7 @@ import codigos.listaEnlazada;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -41,6 +42,20 @@ public class mainWindow extends javax.swing.JFrame {
         }
 
         comboBoxIndex.setModel(aModel);
+    }
+    
+    public void addPalabras(int index){
+        DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
+        
+        aModel.addElement(lista.obtenerMiembro(index));
+        palabrasBox.setModel(aModel);
+    }
+    
+    public void eliminarPalabras(int indeX){
+        DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
+        
+        aModel.addElement(lista.obtenerMiembro(index));
+        palabrasBox.setModel(aModel);
     }
     
     public int contarLetras(String texto){
@@ -93,7 +108,6 @@ public class mainWindow extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         comboBoxIndex = new javax.swing.JComboBox<>();
         operarBoton = new javax.swing.JButton();
         eliminarBoton = new javax.swing.JButton();
@@ -105,17 +119,24 @@ public class mainWindow extends javax.swing.JFrame {
         textoInvertido = new javax.swing.JTextPane();
         textoConcatenado = new javax.swing.JTextPane();
         textoMinusculas = new javax.swing.JTextPane();
-        jPanel2 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        palabrasBox = new javax.swing.JComboBox<>();
         entryMiembro = new javax.swing.JTextField();
         agregarBoton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(197, 237, 199));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 102, 102));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        comboBoxIndex.setBackground(new java.awt.Color(236, 255, 252));
+        comboBoxIndex.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        comboBoxIndex.setForeground(new java.awt.Color(0, 102, 102));
         comboBoxIndex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
         comboBoxIndex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,150 +144,184 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
 
+        operarBoton.setBackground(new java.awt.Color(236, 255, 252));
+        operarBoton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        operarBoton.setForeground(new java.awt.Color(0, 102, 102));
+        operarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/checkGreen.png"))); // NOI18N
         operarBoton.setText("Operar");
+        operarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         operarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 operarBotonActionPerformed(evt);
             }
         });
 
+        eliminarBoton.setBackground(new java.awt.Color(236, 255, 252));
+        eliminarBoton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        eliminarBoton.setForeground(new java.awt.Color(0, 102, 102));
+        eliminarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trashGreen.png"))); // NOI18N
         eliminarBoton.setText("Eliminar");
+        eliminarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarBotonActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("1- Numero de Letras");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("1. Número de Letras:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("3- Concatenar con el último miembro");
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("3. Concatenar con el último miembro:");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setText("4- Pasar a minúsculas");
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("4. Pasar a minúsculas");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setText("2- Invertir frase");
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("2. Invertir frase:");
+
+        textoCantidadLetras.setEditable(false);
+        textoCantidadLetras.setBackground(new java.awt.Color(255, 255, 255));
+        textoCantidadLetras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
+
+        textoInvertido.setEditable(false);
+        textoInvertido.setBackground(new java.awt.Color(255, 255, 255));
+        textoInvertido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
+
+        textoConcatenado.setEditable(false);
+        textoConcatenado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
+
+        textoMinusculas.setEditable(false);
+        textoMinusculas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 2));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 102, 102));
+        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
+        jSeparator1.setAlignmentY(1.0F);
+        jSeparator1.setAutoscrolls(true);
+
+        palabrasBox.setBackground(new java.awt.Color(236, 255, 252));
+        palabrasBox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        palabrasBox.setForeground(new java.awt.Color(0, 102, 102));
+        palabrasBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
+        palabrasBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                palabrasBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(10, 10, 10)
-                .addComponent(textoCantidadLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(textoInvertido, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(textoConcatenado, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3)
-                .addGap(10, 10, 10)
-                .addComponent(textoMinusculas, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 91, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textoConcatenado, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textoInvertido))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textoCantidadLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(textoMinusculas))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(palabrasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eliminarBoton)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                    .addComponent(palabrasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(textoCantidadLetras))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoCantidadLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoInvertido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textoConcatenado)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoInvertido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoConcatenado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoMinusculas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoMinusculas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
-        background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 800, 560));
+        background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 800, 480));
 
-        jPanel2.setBackground(new java.awt.Color(242, 251, 242));
-
-        entryMiembro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        entryMiembro.setForeground(new java.awt.Color(204, 204, 204));
+        entryMiembro.setText(" Ingrese una cadena");
+        entryMiembro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        entryMiembro.setCaretColor(new java.awt.Color(0, 102, 102));
+        entryMiembro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                entryMiembroMousePressed(evt);
+            }
+        });
         entryMiembro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entryMiembroActionPerformed(evt);
             }
         });
+        background.add(entryMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 200, 40));
 
+        agregarBoton.setBackground(new java.awt.Color(236, 255, 252));
+        agregarBoton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        agregarBoton.setForeground(new java.awt.Color(0, 102, 102));
+        agregarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/plusGreen.png"))); // NOI18N
         agregarBoton.setText("Agregar");
+        agregarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarBotonActionPerformed(evt);
             }
         });
+        background.add(agregarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 99, 40));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(entryMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(agregarBoton)
-                .addGap(233, 233, 233))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(entryMiembro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarBoton))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-
-        background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 110));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Group 7.png"))); // NOI18N
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -281,10 +336,16 @@ public class mainWindow extends javax.swing.JFrame {
         agregarMiembro();
         setSizeCombobox();
         
+        String eleccion = (String) comboBoxIndex.getSelectedItem();
+        int indexSeleccionado = Integer.parseInt(eleccion);
+        
+        addPalabras(indexSeleccionado);
+        
         entryMiembro.setText("");
         
         String valorSeleccionado = lista.obtenerMiembro(0);
-        textoCantidadLetras.setText(String.valueOf(contarLetras(valorSeleccionado)));
+            textoCantidadLetras.setText(String.valueOf(contarLetras(valorSeleccionado)));
+
         
         String palabraInvertida = invertir(valorSeleccionado);
         textoInvertido.setText(palabraInvertida);
@@ -317,21 +378,38 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void operarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operarBotonActionPerformed
         // TODO add your handling code here:
-        String eleccion = (String) comboBoxIndex.getSelectedItem();
-        int indexSeleccionado = Integer.parseInt(eleccion);
         
-        String valorSeleccionado = lista.obtenerMiembro(indexSeleccionado);
-        textoCantidadLetras.setText(String.valueOf(contarLetras(valorSeleccionado)));
+        try{
+            String eleccion = (String) comboBoxIndex.getSelectedItem();
+            int indexSeleccionado = Integer.parseInt(eleccion);
+
+            String valorSeleccionado = lista.obtenerMiembro(indexSeleccionado);
+            textoCantidadLetras.setText(String.valueOf(contarLetras(valorSeleccionado)));
+
+            String palabraInvertida = invertir(valorSeleccionado);
+            textoInvertido.setText(palabraInvertida);
+
+            String palabraConcatenada = concatenarUltimo(valorSeleccionado);
+            textoConcatenado.setText(palabraConcatenada);
+
+            String palabraMinusculas = convertirAMinusculas(valorSeleccionado);
+            textoMinusculas.setText(palabraMinusculas);
+        }
+        catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
         
-        String palabraInvertida = invertir(valorSeleccionado);
-        textoInvertido.setText(palabraInvertida);
-        
-        String palabraConcatenada = concatenarUltimo(valorSeleccionado);
-        textoConcatenado.setText(palabraConcatenada);
-        
-        String palabraMinusculas = convertirAMinusculas(valorSeleccionado);
-        textoMinusculas.setText(palabraMinusculas);
     }//GEN-LAST:event_operarBotonActionPerformed
+
+    private void entryMiembroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entryMiembroMousePressed
+        // TODO add your handling code here:
+        entryMiembro.setText("");
+    }//GEN-LAST:event_entryMiembroMousePressed
+
+    private void palabrasBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabrasBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_palabrasBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,10 +456,11 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton operarBoton;
+    private javax.swing.JComboBox<String> palabrasBox;
     private javax.swing.JTextPane textoCantidadLetras;
     private javax.swing.JTextPane textoConcatenado;
     private javax.swing.JTextPane textoInvertido;
