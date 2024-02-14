@@ -7,7 +7,9 @@ package windows;
 import codigos.Nodo;
 import codigos.listaEnlazada;
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -44,18 +46,20 @@ public class mainWindow extends javax.swing.JFrame {
         comboBoxIndex.setModel(aModel);
     }
     
-    public void addPalabras(int index){
-        DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
+    public void addPalabras(){
+        DefaultListModel modelo = new DefaultListModel();
+        modelo.removeAllElements();
+        try{
+            for (int i = 0; i < lista.getSize(); i++) {
+                modelo.addElement(lista.obtenerMiembro(i));
+            } 
+        }
+        catch (NullPointerException ex){
+            
+        }
         
-        aModel.addElement(lista.obtenerMiembro(index));
-        palabrasBox.setModel(aModel);
-    }
-    
-    public void eliminarPalabras(int indeX){
-        DefaultComboBoxModel<String> aModel = new DefaultComboBoxModel<>();
         
-        aModel.addElement(lista.obtenerMiembro(index));
-        palabrasBox.setModel(aModel);
+        listaPalabras.setModel(modelo);
     }
     
     public int contarLetras(String texto){
@@ -67,22 +71,22 @@ public class mainWindow extends javax.swing.JFrame {
     }
 
     public String invertir(String input) {
-        char[] caracteres = input.toCharArray();
+        StringBuilder builder = new StringBuilder(input);
         int i = 0;
-        int j = caracteres.length - 1;
+        int j = builder.length() - 1;
 
         while (i < j) {
             // Intercambiar caracteres
-            char temp = caracteres[i];
-            caracteres[i] = caracteres[j];
-            caracteres[j] = temp;
+            char temp = builder.charAt(i);
+            builder.setCharAt(i, builder.charAt(j));
+            builder.setCharAt(j, temp);
 
             // Mover índices
             i++;
             j--;
         }
 
-        return new String(caracteres);
+        return builder.toString();
     }
     
     public String concatenarUltimo(String actualPalabra){
@@ -94,7 +98,18 @@ public class mainWindow extends javax.swing.JFrame {
     }
     
     public static String convertirAMinusculas(String palabra) {
-        return palabra.toLowerCase();
+        char[] caracteres = palabra.toCharArray();
+        StringBuilder palabraMinusculas = new StringBuilder();
+
+        for(char c: caracteres){
+            if(Character.isUpperCase(c)){
+                palabraMinusculas.append(Character.toLowerCase(c));
+            } else {
+                palabraMinusculas.append(c);
+            }
+        }
+
+        return palabraMinusculas.toString();
     }
     
     /**
@@ -120,10 +135,12 @@ public class mainWindow extends javax.swing.JFrame {
         textoConcatenado = new javax.swing.JTextPane();
         textoMinusculas = new javax.swing.JTextPane();
         jSeparator1 = new javax.swing.JSeparator();
-        palabrasBox = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaPalabras = new javax.swing.JList<>();
         entryMiembro = new javax.swing.JTextField();
         agregarBoton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        palabrasBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,12 +149,11 @@ public class mainWindow extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         comboBoxIndex.setBackground(new java.awt.Color(236, 255, 252));
         comboBoxIndex.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         comboBoxIndex.setForeground(new java.awt.Color(0, 102, 102));
-        comboBoxIndex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
         comboBoxIndex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxIndexActionPerformed(evt);
@@ -149,7 +165,7 @@ public class mainWindow extends javax.swing.JFrame {
         operarBoton.setForeground(new java.awt.Color(0, 102, 102));
         operarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/checkGreen.png"))); // NOI18N
         operarBoton.setText("Operar");
-        operarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        operarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         operarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 operarBotonActionPerformed(evt);
@@ -161,7 +177,7 @@ public class mainWindow extends javax.swing.JFrame {
         eliminarBoton.setForeground(new java.awt.Color(0, 102, 102));
         eliminarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trashGreen.png"))); // NOI18N
         eliminarBoton.setText("Eliminar");
-        eliminarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         eliminarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarBotonActionPerformed(evt);
@@ -199,15 +215,9 @@ public class mainWindow extends javax.swing.JFrame {
         jSeparator1.setAlignmentY(1.0F);
         jSeparator1.setAutoscrolls(true);
 
-        palabrasBox.setBackground(new java.awt.Color(236, 255, 252));
-        palabrasBox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        palabrasBox.setForeground(new java.awt.Color(0, 102, 102));
-        palabrasBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
-        palabrasBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                palabrasBoxActionPerformed(evt);
-            }
-        });
+        listaPalabras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 153, 153), null, null));
+        listaPalabras.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jScrollPane1.setViewportView(listaPalabras);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,33 +229,33 @@ public class mainWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(textoInvertido))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoMinusculas))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(textoConcatenado, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(textoInvertido))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(39, 39, 39)
                                         .addComponent(textoCantidadLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(textoMinusculas))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(palabrasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eliminarBoton)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(eliminarBoton)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(91, 91, 91))))
@@ -253,12 +263,15 @@ public class mainWindow extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(palabrasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(operarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -266,23 +279,23 @@ public class mainWindow extends javax.swing.JFrame {
                     .addComponent(textoCantidadLetras))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoInvertido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(textoConcatenado)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoMinusculas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 800, 480));
 
         entryMiembro.setForeground(new java.awt.Color(204, 204, 204));
-        entryMiembro.setText(" Ingrese una cadena");
+        entryMiembro.setText("Ingrese una cadena");
         entryMiembro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         entryMiembro.setCaretColor(new java.awt.Color(0, 102, 102));
         entryMiembro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +315,7 @@ public class mainWindow extends javax.swing.JFrame {
         agregarBoton.setForeground(new java.awt.Color(0, 102, 102));
         agregarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/plusGreen.png"))); // NOI18N
         agregarBoton.setText("Agregar");
-        agregarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarBotonActionPerformed(evt);
@@ -312,6 +325,16 @@ public class mainWindow extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Group 7.png"))); // NOI18N
         background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 150));
+
+        palabrasBox.setBackground(new java.awt.Color(236, 255, 252));
+        palabrasBox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        palabrasBox.setForeground(new java.awt.Color(0, 102, 102));
+        palabrasBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                palabrasBoxActionPerformed(evt);
+            }
+        });
+        background.add(palabrasBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,28 +356,17 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void agregarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBotonActionPerformed
         // TODO add your handling code here:
-        agregarMiembro();
-        setSizeCombobox();
-        
-        String eleccion = (String) comboBoxIndex.getSelectedItem();
-        int indexSeleccionado = Integer.parseInt(eleccion);
-        
-        addPalabras(indexSeleccionado);
-        
-        entryMiembro.setText("");
-        
-        String valorSeleccionado = lista.obtenerMiembro(0);
-            textoCantidadLetras.setText(String.valueOf(contarLetras(valorSeleccionado)));
+        if(entryMiembro.getText().matches(".*\\S+.*")){
+            agregarMiembro();
+            setSizeCombobox();
 
-        
-        String palabraInvertida = invertir(valorSeleccionado);
-        textoInvertido.setText(palabraInvertida);
-        
-        String palabraConcatenada = concatenarUltimo(valorSeleccionado);
-        textoConcatenado.setText(palabraConcatenada);
-        
-        String palabraMinusculas = convertirAMinusculas(valorSeleccionado);
-        textoMinusculas.setText(palabraMinusculas);
+            addPalabras();
+
+            entryMiembro.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No tiene al menos una letra", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_agregarBotonActionPerformed
 
     private void comboBoxIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxIndexActionPerformed
@@ -363,17 +375,23 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
         // TODO add your handling code here:
-        String eleccion = (String) comboBoxIndex.getSelectedItem();
-        int indexSeleccionado = Integer.parseInt(eleccion);
+        try{
+            String eleccion = (String) comboBoxIndex.getSelectedItem();
+            int indexSeleccionado = Integer.parseInt(eleccion);
 
-        System.out.println(indexSeleccionado + 3);
+            if(!lista.estaVacia()){
+                lista.eliminarMiembro(indexSeleccionado);
 
-        if (indexSeleccionado >= 0 && indexSeleccionado < lista.getSize()) {
-            lista.eliminarMiembro(indexSeleccionado);
-            setSizeCombobox();
-        } else {
-            System.out.println("Índice seleccionado no válido.");
+                setSizeCombobox();
+
+                addPalabras();
+            }
         }
+        catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "No tiene miembros para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        
     }//GEN-LAST:event_eliminarBotonActionPerformed
 
     private void operarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operarBotonActionPerformed
@@ -396,7 +414,7 @@ public class mainWindow extends javax.swing.JFrame {
             textoMinusculas.setText(palabraMinusculas);
         }
         catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay miembros.", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
         
@@ -404,7 +422,10 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void entryMiembroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entryMiembroMousePressed
         // TODO add your handling code here:
-        entryMiembro.setText("");
+        if(entryMiembro.getText().equals("Ingrese una cadena")){
+            entryMiembro.setText("");
+            entryMiembro.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_entryMiembroMousePressed
 
     private void palabrasBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_palabrasBoxActionPerformed
@@ -458,7 +479,9 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JList<String> listaPalabras;
     private javax.swing.JButton operarBoton;
     private javax.swing.JComboBox<String> palabrasBox;
     private javax.swing.JTextPane textoCantidadLetras;

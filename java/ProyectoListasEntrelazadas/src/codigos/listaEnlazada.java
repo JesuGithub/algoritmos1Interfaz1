@@ -48,7 +48,7 @@ public class listaEnlazada {
     }
     
     public void eliminarMiembro(int index){
-        if(index == 0 && cabeza != null){
+        if(index == 0){
             cabeza = cabeza.getSiguiente();
         }
         else if (cabeza != null){
@@ -61,9 +61,10 @@ public class listaEnlazada {
 
             if (temporal.getSiguiente() != null) {
                 temporal.setSiguiente(temporal.getSiguiente().getSiguiente());
-                size--;
+                
             }
         }
+        size--;
     }
 
     
