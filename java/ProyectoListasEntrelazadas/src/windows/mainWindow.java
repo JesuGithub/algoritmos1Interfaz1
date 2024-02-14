@@ -387,7 +387,7 @@ public class mainWindow extends javax.swing.JFrame {
                 addPalabras();
             }
         }
-        catch (NumberFormatException ex){
+        catch (Exception ex){
             JOptionPane.showMessageDialog(null, "No tiene miembros para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
@@ -413,7 +413,7 @@ public class mainWindow extends javax.swing.JFrame {
             String palabraMinusculas = convertirAMinusculas(valorSeleccionado);
             textoMinusculas.setText(palabraMinusculas);
         }
-        catch (NullPointerException ex){
+        catch (Exception ex){
             JOptionPane.showMessageDialog(null, "No hay miembros.", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
